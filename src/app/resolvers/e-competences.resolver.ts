@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {ECompetence, ECompetenceArea} from '../models/e-competence';
+import {ECompetence} from '../models/e-competence';
 import {CompetenceDummyService} from '../services/competence-dummy.service';
 
 @Injectable()

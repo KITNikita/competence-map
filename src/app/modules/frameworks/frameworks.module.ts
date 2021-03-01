@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FrameworksComponent} from './components/frameworks/frameworks.component';
 import {FrameworksRoutingModule} from './frameworks-routing.module';
-import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 import {FrameworkResolver} from '../../resolvers/framework.resolver';
 import {FrameworksResolver} from '../../resolvers/frameworks.resolver';
 import {HttpClient} from '@angular/common/http';
@@ -22,10 +21,18 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
-import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
+import {FrameworkComponent} from './components/framework/framework.component';
+import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
 
 @NgModule({
-  declarations: [FrameworksComponent, FrameworkEditPageComponent],
+  declarations: [
+    FrameworkComponent,
+    FrameworksComponent,
+    FrameworkAddPageComponent,
+    FrameworkEditPageComponent,
+  ],
   imports: [
     CommonModule,
     FrameworksRoutingModule,

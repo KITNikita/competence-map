@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {FRAMEWORKS_ROUTES} from './frameworks-routes';
 import {FrameworksComponent} from './components/frameworks/frameworks.component';
 import {FrameworksResolver} from '../../resolvers/frameworks.resolver';
-import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 import {FrameworkResolver} from '../../resolvers/framework.resolver';
 import {APP_ROUTES} from '../../app-routes';
 import {ECompetencesResolver} from '../../resolvers/e-competences.resolver';
+import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
+import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 
 const routes: Routes = [
   {
@@ -15,6 +16,14 @@ const routes: Routes = [
     component: FrameworksComponent,
     resolve: {
       frameworks: FrameworksResolver
+    },
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: FRAMEWORKS_ROUTES.PATH.ADD,
+    component: FrameworkAddPageComponent,
+    resolve: {
+      eCompetences: ECompetencesResolver
     },
     runGuardsAndResolvers: 'always'
   },

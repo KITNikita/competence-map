@@ -48,7 +48,7 @@
                     <ng-container [formGroup]="competenceControl">
                       <mat-form-field class="form-full-width">
                         <input matInput formControlName="title">
-                        <img class="icon mat-input" src="assets/icons/delete.svg" alt="delete" (click)="onRemoveControl(competenceControl, i)"/>
+                        <img class="icon mat-input" src="../../../../../assets/icons/delete.svg" alt="delete" (click)="onRemoveControl(competenceControl, i)"/>
                       </mat-form-field>
                     </ng-container>
                   </div>
@@ -71,7 +71,7 @@
               <ng-container *ngIf="chosenECompetences?.length > 0; else empty">
                 <div class="drag-n-drop__box" *ngFor="let eCompetence of chosenECompetences; let i = index">
                   {{eCompetence.title}}
-                  <img class="icon" src="assets/icons/delete.svg" alt="delete" (click)="onRemove(eCompetence, i)"/>
+                  <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete" (click)="onRemove(eCompetence, i)"/>
                 </div>
               </ng-container>
             </div>

@@ -31,6 +31,10 @@ export class FrameworksComponent implements OnInit {
     this.router.navigate([APP_ROUTES.PATH.FRAMEWORKS, framework.id, FRAMEWORKS_ROUTES.PATH.EDIT]);
   }
 
+  onAdd() {
+    this.router.navigate([APP_ROUTES.PATH.FRAMEWORKS, FRAMEWORKS_ROUTES.PATH.ADD]);
+  }
+
   onDelete(framework: Framework): void {
 
   }

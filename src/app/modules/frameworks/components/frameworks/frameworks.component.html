@@ -2,7 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1>Frameworks</h1>
+      <div class="row">
+        <h1 class="">Frameworks</h1>
+        <button class="ml-3 icon-back" mat-mini-fab color="primary" (click)="onAdd()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
       <ng-container *ngFor="let framework of frameworks">
         <mat-accordion>
           <mat-expansion-panel style="position: relative" togglePosition="before">

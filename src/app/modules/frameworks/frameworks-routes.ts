@@ -1,7 +1,8 @@
 export const FRAMEWORKS_ROUTES = {
   PATH: {
     ROOT: '',
-    EDIT: 'edit'
+    EDIT: 'edit',
+    ADD: 'add'
   },
   PARAM: {
     FRAMEWORK_ID: 'frameworkId'
