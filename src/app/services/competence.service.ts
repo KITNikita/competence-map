@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ECompetence} from '../models/e-competence';
+import {Environment} from '../../environments/environment';
 
 @Injectable()
 export class CompetenceService {
@@ -8,7 +9,7 @@ export class CompetenceService {
   private readonly resourceUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.resourceUrl = '/competences';
+    this.resourceUrl = `${Environment.apiHost}/competences`;
   }
 
   getAll(): Promise<ECompetence[]> {

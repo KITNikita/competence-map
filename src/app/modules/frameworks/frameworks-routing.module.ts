@@ -9,6 +9,7 @@ import {APP_ROUTES} from '../../app-routes';
 import {ECompetencesResolver} from '../../resolvers/e-competences.resolver';
 import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
 import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
+import {TestVpsComponent} from './components/test-vps/test-vps.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       eCompetences: ECompetencesResolver
     },
     runGuardsAndResolvers: 'always'
+  },
+  {
+    path: 'test-vps',
+    component: TestVpsComponent
   },
   {
     path: '**',

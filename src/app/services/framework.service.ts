@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Framework} from '../models/framework';
+import {Environment} from '../../environments/environment';
 
 @Injectable()
 export class FrameworkService {
@@ -8,7 +9,7 @@ export class FrameworkService {
   private readonly resourceUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.resourceUrl = '/frameworks';
+    this.resourceUrl = `${Environment.apiHost}/frameworks`;
   }
 
   getAll(): Promise<Framework[]> {

@@ -25,6 +25,7 @@ import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scro
 import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 import {FrameworkComponent} from './components/framework/framework.component';
 import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
+import {TestVpsComponent} from './components/test-vps/test-vps.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.pag
     FrameworksComponent,
     FrameworkAddPageComponent,
     FrameworkEditPageComponent,
+    TestVpsComponent,
   ],
   imports: [
     CommonModule,
