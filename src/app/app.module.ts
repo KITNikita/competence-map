@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {Injector, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {ServiceLocator} from './utils/injection/service-locator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {getRouteData} from '../../../../utils/routing/routing-utils';
 import {FRAMEWORKS_ROUTES} from '../../frameworks-routes';
 import {ActivatedRoute} from '@angular/router';
@@ -14,7 +14,8 @@ export class FrameworkEditPageComponent implements OnInit {
   framework: Framework;
   eCompetences: ECompetence[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.framework = getRouteData(this.route, FRAMEWORKS_ROUTES.DATA.FRAMEWORK);

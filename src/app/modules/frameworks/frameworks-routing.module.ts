@@ -49,4 +49,5 @@ const routes: Routes = [
     CommonModule
   ]
 })
-export class FrameworksRoutingModule { }
+export class FrameworksRoutingModule {
+}

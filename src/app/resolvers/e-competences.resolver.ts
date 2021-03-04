@@ -9,7 +9,7 @@ export class ECompetencesResolver implements Resolve<ECompetence[]> {
   constructor(private apiClient: CompetenceDummyService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<ECompetence[]>{
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<ECompetence[]> {
     return this.apiClient.getAll();
   }
 }

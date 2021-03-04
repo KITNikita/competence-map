@@ -17,7 +17,8 @@ export class FrameworksComponent implements OnInit {
 
   frameworks: Framework[];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.frameworks = getRouteData(this.route, FRAMEWORKS_ROUTES.DATA.FRAMEWORKS);

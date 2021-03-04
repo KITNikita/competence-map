@@ -21,7 +21,8 @@
         <button mat-raised-button (click)="onAdd()">Add Competence</button>
         <button mat-raised-button color="primary" class="ml-3"
                 [disabled]="isFormDisabled(frameworkForm)"
-                (click)="onSubmit()">Apply</button>
+                (click)="onSubmit()">Apply
+        </button>
       </div>
       <div class="col-6 select">
         <mat-form-field appearance="fill">
@@ -38,24 +39,25 @@
     <div class="row" [formGroup]="frameworkForm">
       <div class="col-4 custom-container">
         <h3>Competence</h3>
-          <perfect-scrollbar class="custom-scrollbar">
-            <div class="col-12">
-              <div class="drag-n-drop__list">
-                <ng-container *ngFor="let competenceControl of competenceList.controls; let i = index">
-                  <div class="drag-n-drop__box cursor-pointer"
-                       [class.active]="i === selectedCompetenceIndex"
-                       (click)="onChoose(competenceControl, i)">
-                    <ng-container [formGroup]="competenceControl">
-                      <mat-form-field class="form-full-width">
-                        <input matInput formControlName="title">
-                        <img class="icon mat-input" src="../../../../../assets/icons/delete.svg" alt="delete" (click)="onRemoveControl(competenceControl, i)"/>
-                      </mat-form-field>
-                    </ng-container>
-                  </div>
-                </ng-container>
-              </div>
+        <perfect-scrollbar class="custom-scrollbar">
+          <div class="col-12">
+            <div class="drag-n-drop__list">
+              <ng-container *ngFor="let competenceControl of competenceList.controls; let i = index">
+                <div class="drag-n-drop__box cursor-pointer"
+                     [class.active]="i === selectedCompetenceIndex"
+                     (click)="onChoose(competenceControl, i)">
+                  <ng-container [formGroup]="competenceControl">
+                    <mat-form-field class="form-full-width">
+                      <input matInput formControlName="title">
+                      <img class="icon mat-input" src="../../../../../assets/icons/delete.svg" alt="delete"
+                           (click)="onRemoveControl(competenceControl, i)"/>
+                    </mat-form-field>
+                  </ng-container>
+                </div>
+              </ng-container>
             </div>
-          </perfect-scrollbar>
+          </div>
+        </perfect-scrollbar>
 
       </div>
       <ng-container cdkDropListGroup>
@@ -71,7 +73,8 @@
               <ng-container *ngIf="chosenECompetences?.length > 0; else empty">
                 <div class="drag-n-drop__box" *ngFor="let eCompetence of chosenECompetences; let i = index">
                   {{eCompetence.title}}
-                  <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete" (click)="onRemove(eCompetence, i)"/>
+                  <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete"
+                       (click)="onRemove(eCompetence, i)"/>
                 </div>
               </ng-container>
             </div>

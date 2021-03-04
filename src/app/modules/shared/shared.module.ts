@@ -17,4 +17,5 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatToolbarModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
