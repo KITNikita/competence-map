@@ -1,6 +1,6 @@
 export class Environment {
   static production = true;
-  static apiHost = 'https://rti-one-kharkov-api-293908.ue.r.appspot.com';
+  static apiHost = 'http://localhost:8080';
 }
 
 export const environment = new Environment();
