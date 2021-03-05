@@ -1,6 +1,6 @@
 export class Environment {
   static production = true;
-  static apiHost = 'http://localhost:8080';
+  static apiHost = '';
 }
 
 export const environment = new Environment();

@@ -10,11 +10,13 @@ import {ECompetencesResolver} from '../../resolvers/e-competences.resolver';
 import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
 import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 import {TestVpsComponent} from './components/test-vps/test-vps.component';
+import {OktaAuthGuard} from '@okta/okta-angular';
 
 const routes: Routes = [
   {
     path: FRAMEWORKS_ROUTES.PATH.ROOT,
     component: FrameworksComponent,
+    canActivate: [OktaAuthGuard],
     resolve: {
       frameworks: FrameworksResolver
     },

@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {ServiceLocator} from './utils/injection/service-locator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthRoutingModule} from './auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AuthRoutingModule,
     BrowserAnimationsModule
   ],
   providers: [],
