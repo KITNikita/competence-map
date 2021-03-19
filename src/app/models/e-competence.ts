@@ -1,21 +1,19 @@
-import {SkillOrKnowledge} from './skill-or-knowledge';
-import {Competence} from './competence';
+import {SkillsAndKnowledge} from './skills-and-knowledge';
 
 export class ECompetence {
-  id: number;
+  guid: string;
   title: string;
   description: string;
   area: ECompetenceArea;
-  skillsAndKnowledge: SkillOrKnowledge[];
-  competences: Competence[];
+  skillsAndKnowledge: SkillsAndKnowledge[];
 }
 
 export enum ECompetenceArea {
-  PLAN = 'PLAN',
-  BUILD = 'BUILD',
-  RUN = 'RUN',
-  ENABLE = 'ENABLE',
-  MANAGE = 'MANAGE'
+  PLAN = 'A: PLAN',
+  BUILD = 'B: BUILD',
+  RUN = 'C: RUN',
+  ENABLE = 'D: ENABLE',
+  MANAGE = 'E: MANAGE'
 }
 
 // tslint:disable-next-line:no-namespace

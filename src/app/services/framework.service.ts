@@ -21,4 +21,14 @@ export class FrameworkService {
     return this.httpClient.get<Framework>(`${this.resourceUrl}/${id}`)
       .toPromise();
   }
+
+  save(framework: Framework): Promise<Framework> {
+    return this.httpClient.post<Framework>(this.resourceUrl, framework)
+      .toPromise();
+  }
+
+  delete(framework: Framework): Promise<Framework> {
+    return this.httpClient.delete<Framework>(`${this.resourceUrl}/${framework.id}`)
+      .toPromise();
+  }
 }

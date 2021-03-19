@@ -6,7 +6,6 @@ import {FrameworkResolver} from '../../resolvers/framework.resolver';
 import {FrameworksResolver} from '../../resolvers/frameworks.resolver';
 import {HttpClient} from '@angular/common/http';
 import {FrameworkService} from '../../services/framework.service';
-import {FrameworkDummyService} from '../../services/framework-dummy.service';
 import {SharedModule} from '../shared/shared.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,7 +14,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {CompetenceService} from '../../services/competence.service';
-import {CompetenceDummyService} from '../../services/competence-dummy.service';
 import {ECompetencesResolver} from '../../resolvers/e-competences.resolver';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -60,8 +58,6 @@ import {TestVpsComponent} from './components/test-vps/test-vps.component';
     ECompetencesResolver,
     FrameworkService,
     CompetenceService,
-    FrameworkDummyService,
-    CompetenceDummyService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: {suppressScrollX: true}

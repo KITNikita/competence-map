@@ -9,7 +9,7 @@ export function Spinner(name: string = PAGE_SPINNER): MethodDecorator {
 
     const originalMethod = descriptor.value;
 
-    descriptor.value = (...args: any[]) => {
+    descriptor.value = function(...args: any[]) {
       const spinner: NgxSpinnerService = ServiceLocator.get(NgxSpinnerService);
 
       spinner.show(name);

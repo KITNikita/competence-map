@@ -4,12 +4,14 @@ import {SpinnerComponent} from './components/spinner/spinner.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {HeaderComponent} from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {StopPropagationDirective} from './directives/stop-propagation/stop-propagation.directive';
 
 @NgModule({
-  declarations: [SpinnerComponent, HeaderComponent],
+  declarations: [SpinnerComponent, HeaderComponent, StopPropagationDirective],
   exports: [
     HeaderComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    StopPropagationDirective
   ],
   imports: [
     CommonModule,

@@ -20,7 +20,6 @@ export class FrameworkAddPageComponent implements OnInit {
   ngOnInit(): void {
     this.framework = Framework.emptyFramework();
     this.eCompetences = getRouteData(this.route, FRAMEWORKS_ROUTES.DATA.eCOMPETENCES);
-    console.log('HEllo');
   }
 
 }

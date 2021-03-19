@@ -4,7 +4,7 @@
 
 export class Environment {
   static production = false;
-  static apiHost = 'http://localhost:8080';
+  static apiHost = 'http://localhost:8080/api/v1';
 }
 
 export const environment = new Environment();

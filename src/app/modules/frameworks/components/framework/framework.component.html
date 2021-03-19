@@ -1,5 +1,6 @@
 <app-header></app-header>
-<div class="container">
+
+<div class="container" spinner>
   <button class="mb-3 icon-back" mat-mini-fab color="primary" [routerLink]="['../../']">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
@@ -18,10 +19,11 @@
 
     <div class="row">
       <div class="col-6">
-        <button mat-raised-button (click)="onAdd()">Add Competence</button>
-        <button mat-raised-button color="primary" class="ml-3"
+        <button type="button" mat-raised-button (click)="onAdd()">Add Competence</button>
+        <button type="button" mat-raised-button color="primary" class="ml-3"
                 [disabled]="isFormDisabled(frameworkForm)"
-                (click)="onSubmit()">Apply
+                (click)="onApply()">
+          Apply
         </button>
       </div>
       <div class="col-6 select">
@@ -63,39 +65,43 @@
       <ng-container cdkDropListGroup>
         <div class="col-4 custom-container">
           <h3>In</h3>
-          <div class="col-12">
-            <div *ngIf="isSelected(); else notNull"
-                 cdkDropList
-                 cdkDropListSortingDisabled
-                 [cdkDropListData]="chosenECompetences"
-                 class="drag-n-drop__list"
-                 (cdkDropListDropped)="drop($event)">
-              <ng-container *ngIf="chosenECompetences?.length > 0; else empty">
-                <div class="drag-n-drop__box" *ngFor="let eCompetence of chosenECompetences; let i = index">
-                  {{eCompetence.title}}
-                  <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete"
-                       (click)="onRemove(eCompetence, i)"/>
-                </div>
-              </ng-container>
+          <perfect-scrollbar class="custom-scrollbar">
+            <div class="col-12">
+              <div *ngIf="isSelected(); else notNull"
+                   cdkDropList
+                   cdkDropListSortingDisabled
+                   [cdkDropListData]="chosenECompetences"
+                   class="drag-n-drop__list"
+                   (cdkDropListDropped)="drop($event)">
+                <ng-container *ngIf="chosenECompetences?.length > 0; else empty">
+                  <div class="drag-n-drop__box" *ngFor="let eCompetence of chosenECompetences; let i = index">
+                    {{eCompetence.title}}
+                    <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete"
+                         (click)="onRemove(eCompetence, i)"/>
+                  </div>
+                </ng-container>
+              </div>
             </div>
-          </div>
+          </perfect-scrollbar>
         </div>
         <div class="col-4 custom-container">
           <h3>Out</h3>
-          <div class="col-12">
-            <div *ngIf="filteredECompetences; else chooseArea"
-                 cdkDropList
-                 cdkDropListSortingDisabled
-                 [cdkDropListData]="filteredECompetences"
-                 class="drag-n-drop__list"
-                 (cdkDropListDropped)="drop($event)">
-              <ng-container *ngIf="filteredECompetences?.length > 0; else empty">
-                <div class="drag-n-drop__box cursor-move" *ngFor="let eCompetence of filteredECompetences" cdkDrag>
-                  {{eCompetence.title}}
-                </div>
-              </ng-container>
+          <perfect-scrollbar class="custom-scrollbar">
+            <div class="col-12">
+              <div *ngIf="filteredECompetences; else chooseArea"
+                   cdkDropList
+                   cdkDropListSortingDisabled
+                   [cdkDropListData]="filteredECompetences"
+                   class="drag-n-drop__list"
+                   (cdkDropListDropped)="drop($event)">
+                <ng-container *ngIf="filteredECompetences?.length > 0; else empty">
+                  <div class="drag-n-drop__box cursor-move" *ngFor="let eCompetence of filteredECompetences" cdkDrag>
+                    {{eCompetence.title}}
+                  </div>
+                </ng-container>
+              </div>
             </div>
-          </div>
+          </perfect-scrollbar>
         </div>
       </ng-container>
     </div>

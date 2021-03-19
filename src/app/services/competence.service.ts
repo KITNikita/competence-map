@@ -9,11 +9,11 @@ export class CompetenceService {
   private readonly resourceUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.resourceUrl = `${Environment.apiHost}/competences`;
+    this.resourceUrl = `${Environment.apiHost}/eCompetences`;
   }
 
   getAll(): Promise<ECompetence[]> {
-    return this.httpClient.get<ECompetence[]>(`${this.resourceUrl}/e-cf`)
+    return this.httpClient.get<ECompetence[]>(`${this.resourceUrl}`)
       .toPromise();
   }
 }

@@ -1,7 +1,7 @@
 import {ECompetence} from './e-competence';
 
 export class Competence {
-  id: number;
+  id: string;
   title: string;
   eCompetences: ECompetence[];
 }

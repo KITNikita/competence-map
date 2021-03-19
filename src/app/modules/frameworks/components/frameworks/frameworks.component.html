@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container">
+<div class="container" spinner>
   <div class="row">
     <div class="col-12">
       <div class="row">
@@ -8,41 +8,47 @@
           <mat-icon>add</mat-icon>
         </button>
       </div>
-      <ng-container *ngFor="let framework of frameworks">
-        <mat-accordion>
-          <mat-expansion-panel style="position: relative" togglePosition="before">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{framework.title}}
-              </mat-panel-title>
-              <mat-panel-description>
-                Some desc
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div class="buttons-bar">
-              <button mat-button color="primary" (click)="onEdit(framework)">Edit</button>
-              <button mat-button color="warn" (click)="onDelete(framework)">Delete</button>
-            </div>
-            <ng-container *ngFor="let competence of framework.competences">
-              <mat-expansion-panel togglePosition="before">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    {{competence.title}}
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Some desc
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <ul>
-                  <li *ngFor="let skillOrKnowledge of skillsAndKnowledge(competence.eCompetences)">
-                    {{skillOrKnowledge.title}}
-                  </li>
-                </ul>
-              </mat-expansion-panel>
-            </ng-container>
-          </mat-expansion-panel>
-        </mat-accordion>
+      <ng-container *ngIf="frameworks.length > 0; else emptyList">
+        <ng-container *ngFor="let framework of frameworks">
+          <mat-accordion>
+            <mat-expansion-panel togglePosition="before">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{framework.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Some desc
+                </mat-panel-description>
+                <div class="buttons-bar" stop-propagation>
+                  <button mat-button color="primary" (click)="onEdit(framework)">Edit</button>
+                  <button mat-button color="warn" (click)="onDelete(framework)">Delete</button>
+                </div>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let competence of framework.competences">
+                <mat-expansion-panel togglePosition="before">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{competence.title}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Some desc
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ul>
+                    <li *ngFor="let skillOrKnowledge of skillsAndKnowledge(competence.eCompetences)">
+                      {{skillOrKnowledge.title}}
+                    </li>
+                  </ul>
+                </mat-expansion-panel>
+              </ng-container>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
       </ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #emptyList>
+  <h4 class="no-content">No content</h4>
+</ng-template>

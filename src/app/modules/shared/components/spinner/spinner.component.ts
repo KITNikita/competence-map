@@ -11,8 +11,8 @@ export class SpinnerComponent {
 
   readonly spinnerConfig: Spinner = {
     bdColor: '#edf1f2',
-    color: '#f18903',
-    type: 'ball-clip-rotate',
+    color: '#3f51b5',
+    type: 'pacman',
     size: 'default',
     fullScreen: false,
     zIndex: 10000

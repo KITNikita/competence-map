@@ -1,7 +1,7 @@
 import {Competence} from './competence';
 
 export class Framework {
-  id: number;
+  id: string;
   title: string;
   competences: Competence[];
 

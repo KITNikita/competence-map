@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Framework} from '../../../../models/framework';
-import {getRouteData} from '../../../../utils/routing/routing-utils';
-import {ActivatedRoute} from '@angular/router';
-import {FRAMEWORKS_ROUTES} from '../../frameworks-routes';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ECompetence, ECompetenceArea} from '../../../../models/e-competence';
 import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {AbstractFormComponent} from '../../../shared/components/abstract-form/abstract-form.component';
+import {FrameworkService} from '../../../../services/framework.service';
+import {Spinner} from '../../../../utils/spinner/spinner-utils';
+import {APP_ROUTES} from '../../../../app-routes';
 
 @Component({
   selector: 'app-framework',
@@ -26,7 +27,12 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
 
   selectedCompetenceIndex: number;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder,
+    private service: FrameworkService
+  ) {
     super();
   }
 
@@ -51,8 +57,11 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
         })));
   }
 
-  onSubmit(): void {
-    console.log(this.frameworkForm.value);
+  @Spinner()
+  async onApply(): Promise<boolean> {
+    await this.service.save({...this.frameworkForm.getRawValue()});
+
+    return this.router.navigate(['/', APP_ROUTES.PATH.FRAMEWORKS]);
   }
 
   onChoose(competenceControl: AbstractControl, index: number): void {
@@ -66,7 +75,7 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
 
   filterECompetence(): void {
     this.filteredECompetences = this.eCompetences
-      .filter(competence => competence.area === this.selectedArea && !this.chosenECompetences?.includes(competence));
+      .filter(competence => competence.area === this.selectedArea && this.chosenECompetences?.every(ecompetence => ecompetence.guid !== competence.guid));
   }
 
   onRemove(eCompetence: ECompetence, index: number): void {
