@@ -5,6 +5,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {HeaderComponent} from './components/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {StopPropagationDirective} from './directives/stop-propagation/stop-propagation.directive';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [SpinnerComponent, HeaderComponent, StopPropagationDirective],
@@ -16,7 +17,8 @@ import {StopPropagationDirective} from './directives/stop-propagation/stop-propa
   imports: [
     CommonModule,
     NgxSpinnerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ]
 })
 export class SharedModule {
