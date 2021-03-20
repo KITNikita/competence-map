@@ -8,6 +8,8 @@ import {AbstractFormComponent} from '../../../shared/components/abstract-form/ab
 import {FrameworkService} from '../../../../services/framework.service';
 import {Spinner} from '../../../../utils/spinner/spinner-utils';
 import {APP_ROUTES} from '../../../../app-routes';
+import {User} from '../../../../models/user';
+import {AuthService} from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-framework',
@@ -19,6 +21,7 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
 
   @Input() framework: Framework;
   @Input() eCompetences: ECompetence[];
+  @Input() user: User;
 
   frameworkForm: FormGroup;
   selectedArea: ECompetenceArea;
@@ -31,7 +34,8 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private service: FrameworkService
+    private service: FrameworkService,
+    private authService: AuthService
   ) {
     super();
   }
@@ -39,11 +43,15 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
   ngOnInit(): void {
     this.frameworkForm = this.initForm();
     this.fillCompetences();
+    console.log(this.user);
   }
 
   private initForm(): FormGroup {
     return this.fb.group({
-      title: this.fb.control(this.framework.title, Validators.required),
+      title: this.fb.control(
+        {value: this.framework.title, disabled: this.isExpert()},
+        Validators.required
+      ),
       competences: this.fb.array([])
     }, {updateOn: 'blur'});
   }
@@ -52,7 +60,10 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
     this.framework.competences
       .forEach(competence =>
         this.competenceList.push(this.fb.group({
-          title: this.fb.control(competence.title, Validators.required),
+          title: this.fb.control(
+            {value: competence.title, disabled: this.isExpert()},
+            Validators.required
+          ),
           eCompetences: this.fb.control(competence.eCompetences)
         })));
   }
@@ -75,7 +86,10 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
 
   filterECompetence(): void {
     this.filteredECompetences = this.eCompetences
-      .filter(competence => competence.area === this.selectedArea && this.chosenECompetences?.every(ecompetence => ecompetence.guid !== competence.guid));
+      .filter(competence =>
+        competence.area === this.selectedArea
+        && this.chosenECompetences?.every(ecompetence => ecompetence.guid !== competence.guid)
+      );
   }
 
   onRemove(eCompetence: ECompetence, index: number): void {
@@ -103,6 +117,14 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin(this.user);
+  }
+
+  isExpert(): boolean {
+    return this.authService.isExpert(this.user);
   }
 
   isSelected(): boolean {

@@ -7,6 +7,7 @@ import {ServiceLocator} from './utils/injection/service-locator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthRoutingModule} from './auth-routing.module';
+import {SharedModule} from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {AuthRoutingModule} from './auth-routing.module';
     AppRoutingModule,
     HttpClientModule,
     AuthRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

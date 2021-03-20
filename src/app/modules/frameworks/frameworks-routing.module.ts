@@ -11,6 +11,7 @@ import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.pag
 import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.page';
 import {TestVpsComponent} from './components/test-vps/test-vps.component';
 import {OktaAuthGuard} from '@okta/okta-angular';
+import {UserResolver} from '../../resolvers/user.resolver';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     path: FRAMEWORKS_ROUTES.PATH.ADD,
     component: FrameworkAddPageComponent,
     resolve: {
-      eCompetences: ECompetencesResolver
+      eCompetences: ECompetencesResolver,
+      user: UserResolver
     },
     runGuardsAndResolvers: 'always'
   },
@@ -35,7 +37,8 @@ const routes: Routes = [
     component: FrameworkEditPageComponent,
     resolve: {
       framework: FrameworkResolver,
-      eCompetences: ECompetencesResolver
+      eCompetences: ECompetencesResolver,
+      user: UserResolver
     },
     runGuardsAndResolvers: 'always'
   },

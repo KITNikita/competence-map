@@ -1,3 +1,12 @@
 button:hover {
   opacity: 0.9;
 }
+
+.btn-icon {
+  border: none;
+  background: transparent;
+}
+
+.btn-icon:hover {
+  opacity: 0.5;
+}

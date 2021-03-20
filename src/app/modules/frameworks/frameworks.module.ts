@@ -24,6 +24,7 @@ import {FrameworkEditPageComponent} from './pages/framework-edit/framework-edit.
 import {FrameworkComponent} from './components/framework/framework.component';
 import {FrameworkAddPageComponent} from './pages/framework-add/framework-add.page';
 import {TestVpsComponent} from './components/test-vps/test-vps.component';
+import {UserResolver} from '../../resolvers/user.resolver';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {TestVpsComponent} from './components/test-vps/test-vps.component';
     FrameworksResolver,
     FrameworkResolver,
     ECompetencesResolver,
+    UserResolver,
     FrameworkService,
     CompetenceService,
     {

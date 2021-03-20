@@ -1,6 +1,5 @@
 <app-header></app-header>
-
-<div class="container" spinner>
+<div class="container">
   <button class="mb-3 icon-back" mat-mini-fab color="primary" [routerLink]="['../../']">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
@@ -9,7 +8,8 @@
       <div class="col-12">
         <mat-form-field class="form-full-width">
           <mat-label>Framework name</mat-label>
-          <input matInput placeholder="Framework name" [formControlName]="'title'">
+          <input matInput placeholder="Framework name"
+                 [formControlName]="'title'">
           <mat-error *ngIf="hasFieldError(frameworkTitleControl, 'required')">
             Framework title is required
           </mat-error>
@@ -19,7 +19,7 @@
 
     <div class="row">
       <div class="col-6">
-        <button type="button" mat-raised-button (click)="onAdd()">Add Competence</button>
+        <button *ngIf="!isExpert()" type="button" mat-raised-button (click)="onAdd()">Add Competence</button>
         <button type="button" mat-raised-button color="primary" class="ml-3"
                 [disabled]="isFormDisabled(frameworkForm)"
                 (click)="onApply()">
@@ -51,7 +51,9 @@
                   <ng-container [formGroup]="competenceControl">
                     <mat-form-field class="form-full-width">
                       <input matInput formControlName="title">
-                      <img class="icon mat-input" src="../../../../../assets/icons/delete.svg" alt="delete"
+                      <img *ngIf="!isExpert()"
+                           class="icon mat-input"
+                           src="/assets/icons/delete.svg" alt="delete"
                            (click)="onRemoveControl(competenceControl, i)"/>
                     </mat-form-field>
                   </ng-container>
@@ -76,7 +78,9 @@
                 <ng-container *ngIf="chosenECompetences?.length > 0; else empty">
                   <div class="drag-n-drop__box" *ngFor="let eCompetence of chosenECompetences; let i = index">
                     {{eCompetence.title}}
-                    <img class="icon" src="../../../../../assets/icons/delete.svg" alt="delete"
+                    <img *ngIf="!isAdmin()"
+                         class="icon"
+                         src="/assets/icons/delete.svg" alt="delete"
                          (click)="onRemove(eCompetence, i)"/>
                   </div>
                 </ng-container>
@@ -91,6 +95,7 @@
               <div *ngIf="filteredECompetences; else chooseArea"
                    cdkDropList
                    cdkDropListSortingDisabled
+                   [cdkDropListDisabled]="isAdmin()"
                    [cdkDropListData]="filteredECompetences"
                    class="drag-n-drop__list"
                    (cdkDropListDropped)="drop($event)">

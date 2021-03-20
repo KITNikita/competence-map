@@ -10,6 +10,7 @@ export const FRAMEWORKS_ROUTES = {
   DATA: {
     FRAMEWORKS: 'frameworks',
     FRAMEWORK: 'framework',
-    eCOMPETENCES: 'eCompetences'
+    eCOMPETENCES: 'eCompetences',
+    USER: 'user'
   }
 };

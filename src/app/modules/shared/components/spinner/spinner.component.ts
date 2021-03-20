@@ -13,7 +13,7 @@ export class SpinnerComponent {
     bdColor: '#edf1f2',
     color: '#3f51b5',
     type: 'ball-spin',
-    size: 'medium',
+    size: 'default',
     fullScreen: false,
     zIndex: 10000
   };

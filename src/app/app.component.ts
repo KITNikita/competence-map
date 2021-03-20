@@ -2,17 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationCancel, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {PAGE_SPINNER} from './utils/spinner/spinner-utils';
+import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+  template: '<router-outlet spinner></router-outlet>'
 })
 export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private authService: AuthService
   ) {
+    this.authService.initUser();
   }
 
   ngOnInit(): void {
