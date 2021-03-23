@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {OktaAuthService} from '@okta/okta-angular';
 import {Spinner} from '../../../../utils/spinner/spinner-utils';
+import {AuthService} from '../../../../services/auth.service';
+import {User} from '../../../../models/user';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +10,21 @@ import {Spinner} from '../../../../utils/spinner/spinner-utils';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  constructor(private oktaAuth: OktaAuthService) {
+  username$: Subject<string>;
+
+  constructor(private authService: AuthService) {
+    this.username$ = new Subject<string>();
+  }
+
+  async ngOnInit(): Promise<void> {
+    const user: User = await this.authService.getUser();
+    this.username$.next(user.name);
   }
 
   @Spinner()
   async logout(): Promise<void> {
-    await this.oktaAuth.signOut();
+    await this.authService.logout();
   }
 }

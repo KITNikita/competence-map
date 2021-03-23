@@ -1,7 +1,10 @@
 <div class="container__header">
   <mat-toolbar class="header">
     <span>My Application</span>
-    <button mat-raised-button (click)="logout()">Logout</button>
+    <div>
+      <span class="username">{{username$ | async}}</span>
+      <button mat-raised-button (click)="logout()">Logout</button>
+    </div>
   </mat-toolbar>
 </div>
 

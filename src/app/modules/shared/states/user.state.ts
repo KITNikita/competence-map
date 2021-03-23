@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {filterNil, filterNilValue, Query, Store, StoreConfig} from '@datorama/akita';
+import {filterNilValue, Query, Store, StoreConfig} from '@datorama/akita';
 import {filter, take} from 'rxjs/operators';
 import {User} from '../../../models/user';
 
@@ -23,7 +23,7 @@ export class UserStore extends Store<UserState> {
 
 @Injectable({providedIn: 'root'})
 export class UserQuery extends Query<UserState> {
-  user$ = this.select('user').pipe(filterNil);
+  user$ = this.select('user').pipe(filterNilValue());
   userPromise$ = this.select('user').pipe(filterNilValue(), take(1)).toPromise();
   data$ = this.select()
     .pipe(filter(state => Object.values(state).every(field => field != null)));

@@ -4,7 +4,10 @@
     <div class="col-12">
       <div class="row">
         <h1 class="">Frameworks</h1>
-        <button class="ml-3 icon-back" mat-mini-fab color="primary" (click)="onAdd()">
+        <button *ngIf="isAdmin"
+                class="ml-3 icon-back"
+                mat-mini-fab color="primary"
+                (click)="onAdd()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -20,8 +23,16 @@
                   Some desc
                 </mat-panel-description>
                 <div class="buttons-bar" stop-propagation>
-                  <button mat-button color="primary" (click)="onEdit(framework)">Edit</button>
-                  <button mat-button color="warn" (click)="onDelete(framework)">Delete</button>
+                  <button *ngIf="isAdmin"
+                          mat-button color="primary"
+                          (click)="onEdit(framework)">
+                    Edit
+                  </button>
+                  <button *ngIf="isAdmin"
+                          mat-button color="warn"
+                          (click)="onDelete(framework)">
+                    Delete
+                  </button>
                 </div>
               </mat-expansion-panel-header>
               <ng-container *ngFor="let competence of framework.competences">

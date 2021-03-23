@@ -43,7 +43,6 @@ export class FrameworkComponent extends AbstractFormComponent implements OnInit 
   ngOnInit(): void {
     this.frameworkForm = this.initForm();
     this.fillCompetences();
-    console.log(this.user);
   }
 
   private initForm(): FormGroup {

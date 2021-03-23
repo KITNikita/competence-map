@@ -8,6 +8,7 @@ import {SkillsAndKnowledge} from '../../../../models/skills-and-knowledge';
 import {APP_ROUTES} from '../../../../app-routes';
 import {FrameworkService} from '../../../../services/framework.service';
 import {Spinner} from '../../../../utils/spinner/spinner-utils';
+import {AuthService} from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-frameworks',
@@ -18,17 +19,27 @@ import {Spinner} from '../../../../utils/spinner/spinner-utils';
 export class FrameworksComponent implements OnInit {
 
   frameworks: Framework[];
+  isAdmin: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private frameworkService: FrameworkService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private authService: AuthService
   ) {
+    this.authService.initUser();
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.frameworks = getRouteData(this.route, FRAMEWORKS_ROUTES.DATA.FRAMEWORKS);
+    const user = await this.authService.getUser();
+    this.isAdmin = this.authService.isAdmin(user);
+    console.log('user: ', user);
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 
   async syncFrameworks(): Promise<void> {
@@ -53,4 +64,8 @@ export class FrameworksComponent implements OnInit {
     await this.frameworkService.delete(framework);
     this.syncFrameworks();
   }
+
+  // get isAdmin(): boolean {
+  //   return this.authService.isAdmin(this.user);
+  // }
 }
